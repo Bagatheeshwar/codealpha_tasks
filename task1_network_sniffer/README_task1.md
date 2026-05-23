@@ -40,7 +40,7 @@ color-coded output, tracks statistics, and saves logs — all from the terminal.
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/<your-username>/codealpha_tasks.git
+git clone https://github.com/Bagatheeshwar/codealpha_tasks.git
 cd codealpha_tasks/task1_network_sniffer
 
 # 2. Install dependencies
