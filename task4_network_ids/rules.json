@@ -1,0 +1,121 @@
+{
+  "_comment": "CodeAlpha Task 4 – IDS Detection Rules Configuration",
+  "_author": "BAGATHEESHWAR A | CA/DF1/82983",
+
+  "port_scan": {
+    "_description": "Detects SYN/FIN/NULL/XMAS port scan techniques",
+    "syn_threshold": 20,
+    "window_seconds": 10,
+    "fin_alert": true,
+    "null_alert": true,
+    "xmas_alert": true
+  },
+
+  "brute_force": {
+    "_description": "Detects repeated login attempts on SSH, FTP, HTTP",
+    "attempt_threshold": 10,
+    "window_seconds": 60,
+    "monitored_ports": {
+      "22":   "SSH",
+      "21":   "FTP",
+      "23":   "Telnet",
+      "80":   "HTTP",
+      "443":  "HTTPS",
+      "3389": "RDP",
+      "5900": "VNC",
+      "8080": "HTTP-ALT",
+      "8443": "HTTPS-ALT"
+    }
+  },
+
+  "icmp_flood": {
+    "_description": "Detects ICMP flood and Ping-of-Death attacks",
+    "packet_threshold": 30,
+    "window_seconds": 5,
+    "ping_of_death_bytes": 65535
+  },
+
+  "dns_exfil": {
+    "_description": "Detects DNS tunnelling / data exfiltration over DNS",
+    "query_threshold": 50,
+    "window_seconds": 60,
+    "label_length_threshold": 40,
+    "suspicious_tlds": [
+      ".xyz", ".top", ".club", ".pw", ".cc", ".tk", ".ml", ".ga", ".cf"
+    ]
+  },
+
+  "http_attacks": {
+    "_description": "HTTP payload signatures for SQLi and XSS",
+    "sql_injection_signatures": [
+      "' or '1'='1",
+      "union select",
+      "drop table",
+      "insert into",
+      "xp_cmdshell",
+      "exec(",
+      "cast(",
+      "--",
+      "/*",
+      "0x41"
+    ],
+    "xss_signatures": [
+      "<script",
+      "javascript:",
+      "onerror=",
+      "onload=",
+      "alert(",
+      "document.cookie",
+      "eval(",
+      "src=http",
+      "img src",
+      "vbscript:"
+    ],
+    "path_traversal_signatures": [
+      "../",
+      "..\\",
+      "%2e%2e",
+      "/etc/passwd",
+      "win.ini",
+      "system32"
+    ]
+  },
+
+  "arp_spoof": {
+    "_description": "Detects ARP cache poisoning / MITM via ARP replies",
+    "enabled": true,
+    "alert_on_first_change": true
+  },
+
+  "severity_map": {
+    "PORT_SCAN_SYN":    "HIGH",
+    "PORT_SCAN_FIN":    "MEDIUM",
+    "PORT_SCAN_NULL":   "MEDIUM",
+    "PORT_SCAN_XMAS":   "HIGH",
+    "BRUTE_FORCE_SSH":  "HIGH",
+    "BRUTE_FORCE_FTP":  "HIGH",
+    "BRUTE_FORCE_HTTP": "MEDIUM",
+    "ICMP_FLOOD":       "HIGH",
+    "PING_OF_DEATH":    "HIGH",
+    "DNS_EXFILTRATION": "HIGH",
+    "DNS_TUNNELING":    "MEDIUM",
+    "SQL_INJECTION":    "HIGH",
+    "XSS_PROBE":        "HIGH",
+    "ARP_SPOOFING":     "HIGH"
+  },
+
+  "whitelist": {
+    "_description": "IPs that will NEVER trigger alerts",
+    "ips": [
+      "127.0.0.1",
+      "::1"
+    ]
+  },
+
+  "output": {
+    "log_file":    "ids_alerts.log",
+    "csv_file":    "ids_alerts.csv",
+    "report_file": "ids_report.txt",
+    "console_color": true
+  }
+}

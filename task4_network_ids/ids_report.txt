@@ -1,0 +1,23 @@
+============================================================
+  NETWORK INTRUSION DETECTION SYSTEM – SESSION REPORT
+  Intern : BAGATHEESHWAR A  |  ID: CA/DF1/82983
+============================================================
+  Session Duration : 6.0 seconds
+  Packets Analysed : 0
+  Total Alerts     : 10
+
+  Alert Breakdown:
+    PORT_SCAN_SYN                              1 alert(s)
+    BRUTE_FORCE_SSH                            1 alert(s)
+    PORT_SCAN_XMAS                             1 alert(s)
+    ICMP_FLOOD                                 1 alert(s)
+    SQL_INJECTION                              1 alert(s)
+    ARP_SPOOFING                               1 alert(s)
+    DNS_EXFILTRATION                           1 alert(s)
+    DNS_TUNNELING                              1 alert(s)
+    XSS_PROBE                                  1 alert(s)
+    BRUTE_FORCE_FTP                            1 alert(s)
+
+  Log files : ids_alerts.log
+              ids_alerts.csv
+============================================================

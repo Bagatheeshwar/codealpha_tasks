@@ -1,0 +1,12 @@
+# CodeAlpha Task 4 – Network IDS Requirements
+# Intern: BAGATHEESHWAR A | CA/DF1/82983
+
+# Core packet-capture library
+scapy>=2.5.0
+
+# Optional: rich console output (progress bars, tables)
+rich>=13.0.0
+
+# Standard-library modules used (no install needed):
+#   json, csv, os, sys, time, signal, argparse,
+#   datetime, threading, collections
