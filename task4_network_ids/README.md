@@ -60,7 +60,7 @@ task4_network_ids/
 ### Step 1 – Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/codealpha_tasks.git
+git clone https://github.com/Bagatheeshwar/codealpha_tasks.git
 cd codealpha_tasks/task4_network_ids
 ```
 
